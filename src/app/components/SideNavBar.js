@@ -158,7 +158,7 @@ const SideNavBar = ({}) => {
           name="my_tabs_1"
           role="tab"
           className="tab text-lg text-black"
-          aria-label="My Resources"
+          aria-label="Private"
           checked={isChecked}
           onChange={handleTabChange}
         />
