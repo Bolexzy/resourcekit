@@ -50,7 +50,6 @@ const KitDetails = ({ params }) => {
         const q = query(
           collection(db, "files"),
           where("resourceId", "==", id),
-          where("createdBy", "==", session.user.email)
         );
 
         getDocs(q)
@@ -80,7 +79,6 @@ const KitDetails = ({ params }) => {
         const q = query(
           collection(db, "Urls"),
           where("resourceId", "==", id),
-          where("createdBy", "==", session.user.email)
         );
 
         getDocs(q)
