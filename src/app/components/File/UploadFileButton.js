@@ -52,6 +52,7 @@ const UploadFileButton = ({ resourceId }) => {
         type="file"
         className="file-input file-input-bordered file-input-sm w-48 md:w-full max-w-xs"
         onChange={(e) => onFileUpload(e.target.files[0])}
+        onKeyDown={(e) => e.key == "Enter" && onFileUpload(e.target.files[0])}
       />
     </div>
   );

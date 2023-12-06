@@ -25,34 +25,40 @@ const FileItems = ({ file }) => {
 
   return (
     <div>
-      <div className="flex gap-5 pl-5 rounded-lg p-3 items-center bg-[#114559] w-full text-white">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
-          />
-        </svg>
-        <a
-          href={`${file.imageUrl}`}
-          target="_blank"
-          className="no-underline hover:underline hover:underline-offset-3 decoration-sky-100 "
-        >
-          {file.name}
-        </a>
-        <h2 className="text-[15px]">
-          {/* {moment(file.modifiedAt).format("MMMM DD, YYYY")} */}
-          {moment(file.modifiedAt).format("MMMM DD, YYYY")}
-        </h2>
+      <div className="flex justify-between gap-5 pl-5 rounded-lg p-3 items-center bg-[#114559] w-full text-white overflow-auto">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
+            />
+          </svg>
+        </div>
+        <div>
+          <a
+            href={`${file.imageUrl}`}
+            target="_blank"
+            className="no-underline text-sm hover:underline hover:underline-offset-3 decoration-sky-100 "
+          >
+            {file.name}
+          </a>
+        </div>
+        <div>
+          <h2 className="text-sm w-[5px]">
+            {/* {moment(file.modifiedAt).format("MMMM DD, YYYY")} */}
+            {moment(file.modifiedAt).format("MMMM DD, YYYY")}
+          </h2>
+        </div>
         <div
-          className="ml-auto mr-2 hover:scale-105 transition-all hover:text-red-400"
+          className="hover:scale-105 transition-all hover:text-red-400"
           onClick={() => deleteFile(file)}
         >
           <svg

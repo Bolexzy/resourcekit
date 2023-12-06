@@ -16,6 +16,7 @@ import {
 } from "firebase/firestore";
 import UrlItems from "@/app/components/Urls/UrlItems";
 import FileItems from "@/app/components/File/FileItems";
+import SideNavBar from "@/app/components/SideNavBar";
 
 const KitDetails = ({ params }) => {
   const searchParams = useSearchParams();
@@ -35,7 +36,7 @@ const KitDetails = ({ params }) => {
       getFileList();
       console.log(session.user.email);
     } else {
-      redirect("/api/auth/signin");
+      redirect("/Login");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,34 +106,36 @@ const KitDetails = ({ params }) => {
 
   //   const urlElements = urlList.map((url) => <UrlItems url={url} key={url.id} />);
 
-
-
   //   console.log(`after urlList: ${JSON.stringify(urlList)}`);
 
   return (
-    <div className="w-full h-full col-span-2 p-8 bg-[#043547] sticky top-0 z-10">
-      <div className="flex justify-around items-center mb-10">
-        <h3 className="text-lg text-white">{name}</h3>
-        <UploadFileButton resourceId={params.kitId} />
-      </div>
+    <div className="md:grid md:grid-cols-3 w-full h-screen md:gap-0">
+      <SideNavBar />
 
-      <div className="flex flex-col gap-4">
-        <UploadUrlItem resourceId={params.kitId} />
-      </div>
-
-      <div className=" justify-around items-center mt-12">
-        {/* simple link */}
-        <div className="flex flex-col gap-4 mb-4">
-          {urlList.map((url, index) => (
-            <UrlItems url={url} key={index} />
-          ))}
+      <div className="w-full h-full col-span-2 p-8 bg-[#043547] sticky top-0 z-10">
+        <div className="flex justify-around items-center mb-10">
+          <h3 className="text-lg text-white">{name}</h3>
+          <UploadFileButton resourceId={params.kitId} />
         </div>
 
-        <div className="flex flex-col gap-4 text-left mt-12 text-gray-200">
-          <h3 className="text-lg">Files</h3>
-          {fileList.map((file, index) => (
-            <FileItems file={file} key={index} />
-          ))}
+        <div className="flex flex-col gap-4">
+          <UploadUrlItem resourceId={params.kitId} />
+        </div>
+
+        <div className=" justify-around items-center mt-12">
+          {/* simple link */}
+          <div className="flex flex-col gap-4 mb-4">
+            {urlList.map((url, index) => (
+              <UrlItems url={url} key={index} />
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-4 text-left mt-12 text-gray-200">
+            <h3 className="text-lg">Files</h3>
+            {fileList.map((file, index) => (
+              <FileItems file={file} key={index} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

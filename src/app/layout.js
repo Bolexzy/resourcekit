@@ -25,14 +25,8 @@ export default async function RootLayout({ children }) {
         <SessionProvider session={session}>
           <HeaderNav />
           {/* <ShowToastContext.Provider> */}
-          <main className="min-w-screen h-screen lg:mx-32 ">
-            <ThemeContextProvider>
-              <div className="md:grid md:grid-cols-3 w-full h-full md:gap-0">
-                <SideNavBar />
-
-                {children}
-              </div>
-            </ThemeContextProvider>
+          <main className="min-w-screen min-h-screen lg:mx-32 ">
+            <ThemeContextProvider>{children}</ThemeContextProvider>
           </main>
         </SessionProvider>
         {/* </ShowToastContext.Provider> */}

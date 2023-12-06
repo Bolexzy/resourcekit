@@ -10,6 +10,7 @@ import Toast from "../Toast";
 
 const CreateResourceModal = () => {
   const [resourceKit, setResourceKit] = useState();
+  const [isChecked, setIsChecked] = useState(true);
   const { showToast, setShowToast } = useThemeContext();
 
   // Initialize Cloud Firestore and get a reference to the service
@@ -23,7 +24,7 @@ const CreateResourceModal = () => {
     try {
       const docRef = await setDoc(doc(db, "Resources", docId.toString()), {
         name: resourceKit,
-        private: true,
+        private: isChecked,
         id: docId.toString(),
         createdBy: session.user.email,
       });
@@ -36,6 +37,9 @@ const CreateResourceModal = () => {
     }
   };
 
+  const handleChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
   return (
     <div>
       <form method="dialog" className="modal-box p-9 items-center bg-white">
@@ -53,6 +57,17 @@ const CreateResourceModal = () => {
               rounded-md bg-gray-100 text-black "
             onChange={(e) => setResourceKit(e.target.value)}
           />
+          <div className="form-control">
+            <label className="cursor-pointer label">
+              <span className="label-text">Private</span>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleChange}
+                className="checkbox checkbox-info"
+              />
+            </label>
+          </div>
           <button
             className="bg-blue-500
         text-white rounded-md p-2 px-3 w-full"

@@ -16,37 +16,28 @@ export default function Home() {
     if (session) {
       console.log(session.user.email);
     } else {
-      redirect("/api/auth/signin");
+      redirect("/Login");
     }
   }, [session]);
 
   return (
-    <div className="md:col-span-2 rounded-l-[1.75rem] p-5">
-      <div className="hero md:min-h-screen">
-        <div className="hero-content text-center bg-[#041B24] rounded-2xl md:p-10 shadow shadow-lg shadow-cyan-500/10 ">
-          <div className="max-w-md">
-            <p className="py-3 text-lg mb-4">{`Welcome, ${session?.user.name}`}</p>
-            <h1 className="text-xl md:text-4xl font-bold">
-              Unleash Your Potential with Our Resource Kit
-            </h1>
-            <p className="text-sm py-6 tracking-wide">
-              Our user-friendly resource kit empowers you to organize and manage
-              your resources effectively, enhance your productivity, and reduce
-              stress and anxiety. With its comprehensive features, including
-              link and file storage, time management tools, and a personalized
-              workspace, you can streamline your workflow and achieve greater
-              focus. Join thousands of users who have discovered the power of
-              our resource kit and experience a surge in organization and
-              success.
-            </p>
-            <h1 className="text-lg md:text-2xl font-bold">
-              Make a Resource now!
-            </h1>
+    <div className="md:grid md:grid-cols-3 w-full h-full md:gap-0">
+      <div className="md:col-span-2 rounded-l-[1.75rem] p-5 md:order-last">
+        <div className="hero md:min-h-screen">
+          <div className="hero-content text-center rounded-2xl md:p-10 ">
+            <div className="max-w-md">
+              <p className="py-3 text-lg mb-4">{`Welcome, ${session?.user.name}`}</p>
+
+              <h1 className="text-lg md:text-2xl font-bold mt-2">
+                Make a Resource now!
+              </h1>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* <SideNavBar resourceKits={resourceKits} /> */}
+        {/* <SideNavBar resourceKits={resourceKits} /> */}
+      </div>
+      <SideNavBar />
     </div>
   );
 }
