@@ -37,6 +37,7 @@ const SideNavBar = ({}) => {
       getPublicResource();
       console.log(session.user.email);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, showToast]);
 
   //   fetch resource kits from firebase for render

@@ -37,6 +37,7 @@ const KitDetails = ({ params }) => {
     } else {
       redirect("/api/auth/signin");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, showToast]);
 
   //   fetch firebase and get files of the resource and user

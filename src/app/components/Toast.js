@@ -9,6 +9,8 @@ const Toast = ({ msg }) => {
     setInterval(() => {
       setShowToast(null);
     }, 5000);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showToast]);
 
   return (
