@@ -105,9 +105,7 @@ const KitDetails = ({ params }) => {
 
   //   const urlElements = urlList.map((url) => <UrlItems url={url} key={url.id} />);
 
-  const fileElements = fileList.map((file) => (
-    <FileList file={file} key={file.id} />
-  ));
+
 
   //   console.log(`after urlList: ${JSON.stringify(urlList)}`);
 
