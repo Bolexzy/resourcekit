@@ -4,7 +4,7 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
-  const URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const URL = process.env.VERCEL_BASE_URL ?? "https://resourcekit.vercel.app/";
 
   const handleGithubSignIn = (event) => {
     event.preventDefault();

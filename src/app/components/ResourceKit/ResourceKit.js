@@ -24,7 +24,7 @@ const ResourceKit = ({ kit, onResourceClick, activeIndex }) => {
       }}
     >
       <div
-        className={`w-4/5 h-[40px] shadow-md flex  p-2 pl-4 gap-5 rounded-xl text-black hover:text-white hover:bg-[#275A6EC2] transition-all ${
+        className={`w-full h-[50px] shadow-md flex  p-2 pl-4 gap-5 rounded-xl text-black hover:text-white hover:bg-[#275A6EC2] transition-all ${
           activeIndex === kit.id ? `bg-[#275A6EC2]` : ""
         }`}
       >
