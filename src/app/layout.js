@@ -30,7 +30,6 @@ export default async function RootLayout({ children }) {
           </main>
         </SessionProvider>
         {/* </ShowToastContext.Provider> */}
-        <Footer />
       </body>
     </html>
   );

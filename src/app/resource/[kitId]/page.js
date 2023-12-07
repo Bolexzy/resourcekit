@@ -107,7 +107,7 @@ const KitDetails = ({ params }) => {
   //   console.log(`after urlList: ${JSON.stringify(urlList)}`);
 
   return (
-    <div className="md:grid md:grid-cols-3 w-full h-screen md:gap-0">
+    <div className="md:grid md:grid-cols-3 w-full min-h-screen md:gap-0 oveflow-auto overscroll-contain">
       <SideNavBar />
 
       <div className="w-full h-full col-span-2 p-8 bg-[#043547] sticky top-0 z-10">
