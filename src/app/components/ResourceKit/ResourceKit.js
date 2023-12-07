@@ -2,18 +2,24 @@ import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import React from "react";
 import { app } from "../../../../firebase/FirebaseConfig";
 import { useThemeContext } from "../../context/theme";
+import { useSession } from "next-auth/react";
 
 const ResourceKit = ({ kit, onResourceClick, activeIndex }) => {
   const { showToast, setShowToast } = useThemeContext();
+  const { data: session, status } = useSession();
 
   const db = getFirestore(app);
 
   const deleteResource = async (e, kit) => {
     e.stopPropagation();
 
-    await deleteDoc(doc(db, "Resources", kit.id.toString())).then((resp) => {
-      setShowToast("Resource Deleted!!!");
-    });
+    if (kit.createdBy === session.user.email) {
+      await deleteDoc(doc(db, "Resources", kit.id.toString())).then((resp) => {
+        setShowToast("Resource Deleted!!!");
+      });
+    } else {
+      setShowToast("User Error, Kit Can't be deleted");
+    }
   };
 
   return (

@@ -1,7 +1,9 @@
+"use client";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import { app } from "../../../../firebase/FirebaseConfig";
 import React from "react";
 import { useThemeContext } from "../../context/theme";
+import { useSession } from "next-auth/react";
 
 const UrlItems = ({ url }) => {
   const db = getFirestore(app);
@@ -9,10 +11,16 @@ const UrlItems = ({ url }) => {
 
   console.log(`url: ${url}`);
 
+  const { data: session, status } = useSession();
+
   const deleteUrl = async (url) => {
-    await deleteDoc(doc(db, "Urls", url.id.toString())).then((resp) => {
-      setShowToast("Resource Deleted!!!");
-    });
+    if (url.createdBy === session.user.email) {
+      await deleteDoc(doc(db, "Urls", url.id.toString())).then((resp) => {
+        setShowToast("Resource Deleted!!!");
+      });
+    } else {
+      setShowToast("User Error, Resource Can't be deleted");
+    }
   };
 
   return (

@@ -1,11 +1,14 @@
+"use client";
 import { deleteDoc, doc, getFirestore } from "firebase/firestore";
 import React from "react";
 import { app } from "../../../../firebase/FirebaseConfig";
 import { useThemeContext } from "../../context/theme";
 import moment from "moment";
+import { useSession } from "next-auth/react";
 
 const FileItems = ({ file }) => {
   const { showToast, setShowToast } = useThemeContext();
+  const { data: session, status } = useSession();
 
   const db = getFirestore(app);
 
@@ -18,9 +21,13 @@ const FileItems = ({ file }) => {
   //   };
 
   const deleteFile = async (file) => {
-    await deleteDoc(doc(db, "files", file.id.toString())).then((resp) => {
-      setShowToast("File Deleted!!!");
-    });
+    if (file.createdBy === session.user.email) {
+      await deleteDoc(doc(db, "files", file.id.toString())).then((resp) => {
+        setShowToast("File Deleted!!!");
+      });
+    } else {
+      setShowToast("User Error, File Can't be deleted");
+    }
   };
 
   return (
